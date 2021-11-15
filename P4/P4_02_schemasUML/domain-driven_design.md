@@ -199,6 +199,6 @@
 | - le nom du livreur|
 | - le temps de livraison|
 
-###### | Paiement|
-###### |---------|
-###### | - type de paiement|
+> | Paiement|
+> |---------|
+> | - type de paiement|
