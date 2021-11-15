@@ -180,13 +180,19 @@
 
 ## LES CLASSES
 
-
-
 | Menu |
 |------|
-| - le nom du plat|
-| - le type de plat (plat ou dessert)|
-| - la disponibilitee du plat|
+| - plat 1: clé primaire|
+| - plat 2: clé primaire|
+| - plat 3: clé primaire|
+| - plat 4: clé primaire|
+
+
+| Plat |
+|------|
+| - le nom du plat: string|
+| - le type de plat (plat ou dessert): string|
+| - la disponibilitee du plat: |
 | - la quantite de plat en service|
 | - la liste d'ingrédient dans le plat|
 | - le pri du plat|
