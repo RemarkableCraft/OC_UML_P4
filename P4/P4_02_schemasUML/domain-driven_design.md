@@ -37,7 +37,7 @@
 ---------------------------------
 
 ## LEURS ACTIONS
-([x] sur l'application)
+- [x] *\( sur l'application\)*
 
 ### Restaurateur
 - [x] Elaborer le menu du jour (choix de 2 plats et 2 desserts)
