@@ -21,15 +21,18 @@
 
 ## LEURS OBJECTIFS / CAS D'UTILISATION
 
-### Restaurateur	--> Livrer des plats de qualité à domilcile
-			--> Faire le menu du jour
-			--> Préparer et conditionner 2 plats et 2 desserts
-			--> Transmettre les plats aux livreurs
+### Restaurateur
+	--> Livrer des plats de qualité à domilcile
+	--> Faire le menu du jour
+	--> Préparer et conditionner 2 plats et 2 desserts
+	--> Transmettre les plats aux livreurs
 
-### Livreur 		--> "Marauder" dans les rues en attendant une livraison
-			--> Livrer les commandes le plus rapidement possible (moins de 20min)
+### Livreur
+	--> "Marauder" dans les rues en attendant une livraison
+	--> Livrer les commandes le plus rapidement possible (moins de 20min)
 
-### Client		--> Commander un ou plusieurs plats
+### Client
+	--> Commander un ou plusieurs plats
 
 ---------------------------------
 
@@ -37,23 +40,23 @@
 ([x] sur l'application)
 
 ### Restaurateur
-[x] Elaborer le menu du jour (choix de 2 plats et 2 desserts)
-[ ] Réaliser et conditionner les plats
-[ ] Transmettre les différents plats aux livreurs
-[x] Mettre en ligne le menu
+- [x] Elaborer le menu du jour (choix de 2 plats et 2 desserts)
+- [ ] Réaliser et conditionner les plats
+- [ ] Transmettre les différents plats aux livreurs
+- [x] Mettre en ligne le menu
 
 ### Livreur
-[x] Réceptionner les plats
-[ ] Se déplacer dans la ville
-[x] Consulter les commandes clients
-[ ] Livrer la commande le plus rapidement possible (- de 20min)
-[x] Confirmer la livraison de commande
+- [x] Réceptionner les plats
+- [ ] Se déplacer dans la ville
+- [x] Consulter les commandes clients
+- [ ] Livrer la commande le plus rapidement possible (- de 20min)
+- [x] Confirmer la livraison de commande
 
 ### Client
-[x] Consulter le menu du jour
-[x] Commander un ou plusieurs plats dans son panier
-[ ] _Payer sa commande_
-[x] Réceptionner sa commande
+- [x] Consulter le menu du jour
+- [x] Commander un ou plusieurs plats dans son panier
+- [ ] _Payer sa commande_
+- [x] Réceptionner sa commande
 
 ---------------------------------
 
@@ -196,6 +199,6 @@
 | - le nom du livreur|
 | - le temps de livraison|
 
->| Paiement|
->|---------|
->| - type de paiement|
+###### | Paiement|
+###### |---------|
+###### | - type de paiement|
