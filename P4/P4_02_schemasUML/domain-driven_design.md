@@ -77,21 +77,21 @@
 - le restaurateur entre la __quantités réalisable__ de chaque plats
 - le restaurateur valide son menu
 - l'application enregistre les plats sélectionnés et les quantités réalisable
-- l'application affiche le __menu__ final
+- l'application affiche le menu du jour final
 - l'application mais en ligne le menu
 - l'application envoie une notification aux clients
 
 ### Réassort des livreurs
 - le __restaurateur__ demande des __livreurs__
-- l'__application__ envoie une alerte "besoin de livreur" à la liste de livreur
+- l'__application__ envoie une alerte "besoin de livreur" à la __liste de livreur__
 - le __livreur__ demande à ouvrir l'alerte
-- l'application affiche le __formulaire de statut__ du livreur
+- l'application affiche le __*formulaire de statut*__ du livreur
 - le livreur valide son __statut__ d'actif
 - l'application change le statut du livreur en "actif"
-- L'application compte le __nombre de livreur__ en statut "actif"
+- L'application compte le nombre de livreur dans la __liste de livreur actif__
 - l'application stop la recherche de livreur si celui ci atteint la __quantité réalisable__ de plat défini par le restaurateur
 - l'application calcul la __quantité de plat à préparer__ que doit faire le restaurateur
-- l'application affiche au restaurateur la __liste de livreur__ et la __quantité de plat à préparer__
+- l'application affiche au restaurateur la liste de livreur et la quantité de plat à préparer
 - le restaurateur confirme la liste de livreur et la quantité de plat à préaprer
 - l'application affiche le __stock de plat__ à fournir à chaque livreur
 - le livreur demande à récuperer son stock de plat
@@ -105,11 +105,11 @@
 - l'__application__ affiche le __menu du jour__
 - le client sélectionne un ou plusieurs plats
 - l'application affiche le ou les __plats sélectionnés__
-- l'application affiche un formulaire pour connaitre le __nombre de plats__
-- le client entre le nombre de plats souhaité
-- le client valide la commande de ce ou ces plats sélectionnés
-- l'application enregistre la __commande__
-- l'application affiche la __synthese de la commande__
+- l'application affiche un formulaire pour connaitre le __nombre de plats à livrer__
+- le client entre le nombre de plats à liver
+- le client valide la __commande__ de ce ou ces plats sélectionnés
+- l'application enregistre la commande
+- l'application affiche la synthese de la commande
 - l'application demande une validation de la commande au clients
 - le client valide la commande
 - l'application valide la commande
@@ -184,5 +184,73 @@
 |Restarateur|
 |---|
 | |
+
+|Menu du jour|
+|---|
 | |
 
+|Liste des plats|
+|---|
+| |
+
+|Image|
+|---|
+| - Nom du fichier: string|
+
+|Plat|
+|---|
+| - Nom: string|
+| - Liste ingrédient: string|
+| - Prix: number|
+| - Type: string|
+
+|Plat sélectionné|
+|---|
+| |
+
+|Liste des plats sélectionnés|
+|---|
+| |
+
+|Quantité de plat réalisable|
+|---|
+| |
+
+|Livreur|
+|---|
+| - Statut |
+
+|Liste de livreur|
+|---|
+| |
+
+|Liste de livreur actif|
+|---|
+| |
+
+|Quantité de plat à préparer|
+|---|
+| |
+
+|Stock de plat|
+|---|
+| |
+
+|Client|
+|---|
+| - Adresse|
+| - Pseudo|
+
+|Nombre de plat à livrer|
+|---|
+| |
+
+|Commande|
+|---|
+| |
+
+|Livraison|
+|---|
+| - Itinéraire|
+| - Temps|
+| - Statut|
