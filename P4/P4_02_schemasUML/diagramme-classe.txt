@@ -1,0 +1,19 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Restaurateur {
+}
+class Menu_du_jour {
+}
+class Liste_plats {
+}
+class Image {
+  - Nom du fichier: string
+}
+class Plat {
+  - Nom: string
+  - Liste ingrédient: string
+  - Prix: number
+  - Type: string
+}
+@enduml
