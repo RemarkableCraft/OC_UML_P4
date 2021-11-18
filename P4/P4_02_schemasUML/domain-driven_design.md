@@ -63,71 +63,72 @@
 ## DESCRIPTION DES CAS D'UTILISATION
 
 ### Elaborer le menu du jour
-- le __restaurateur__ demande à créer le __menu__ du jour
-- l'application affiche la liste des __plats__
-  * une __*image*__ du plat
-  * le __*nom*__ du plats
-  * la liste d'__*ingrédients*__
-  * le __*prix*__ du plat
-  * le __*type*__ de plat
-- le restaurateur sélectionne les plats dans la liste
-- l'application enregistre la liste de plat sélectionnés
-- le restaurateur demande la liste de ses plats sélectionnés
-- l'application affiche les plats sélectionnés
-- le restaurateur entre la __*quantités max*__ qu'il peut réaliser de chaque plats
+- le __restaurateur__ demande à créer le __menu du jour__
+- l'__application__ affiche la __liste des plats__
+  * une __image__ du plat
+  * le __nom__ du plats
+  * la __liste d'ingrédients__
+  * le __prix__ du plat
+  * le __type__ de plat
+- le restaurateur sélectionne le ou les __plats__ dans la liste
+- l'application enregistre le ou les __plats sélectionnés__
+- le restaurateur demande la __liste des plats sélectionnés__
+- l'application affiche la liste des plats sélectionnés
+- le restaurateur entre la __quantités réalisable__ de chaque plats
 - le restaurateur valide son menu
-- l'application enregistre les plats choisis et les quantités
-- l'application affiche le menu final
+- l'application enregistre les plats sélectionnés et les quantités réalisable
+- l'application affiche le __menu__ final
 - l'application mais en ligne le menu
 - l'application envoie une notification aux clients
 
 ### Réassort des livreurs
-- le restaurateur demande à livrer ses plats
-- l'application envoie une alerte "besoin de livreur" à la liste de livreur
+- le __restaurateur__ demande des __livreurs__
+- l'__application__ envoie une alerte "besoin de livreur" à la liste de livreur
 - le __livreur__ demande à ouvrir l'alerte
-- l'application affiche le formulaire de demande d'activité du livreur
-- le livreur valide son __*statut*__ d'actif
+- l'application affiche le __formulaire de statut__ du livreur
+- le livreur valide son __statut__ d'actif
 - l'application change le statut du livreur en "actif"
-- l'application stop la recherche de livreur si celui ci atteint la quantité max de plat défini par le restaurateur
-- l'application calcul la quantité de plat prévisionnel que doit faire le restaurateur
-- l'application affiche au restaurateur la liste de livreur et nombre de plat à préparer
-- le restaurateur confirme la liste et les quantités
-- l'application affiche la quantité de plat à fournir à chaque livreur
-- le livreur demande à récuperer son __stock__
-- l'application affiche la quantité des plats qu'il doit récupérer
-- l'application envoi une alerte au restaurateur de préparer le stock du livreur
-- le livreur valide le stock reçu
+- L'application compte le __nombre de livreur__ en statut "actif"
+- l'application stop la recherche de livreur si celui ci atteint la __quantité réalisable__ de plat défini par le restaurateur
+- l'application calcul la __quantité de plat à préparer__ que doit faire le restaurateur
+- l'application affiche au restaurateur la __liste de livreur__ et la __quantité de plat à préparer__
+- le restaurateur confirme la liste de livreur et la quantité de plat à préaprer
+- l'application affiche le __stock de plat__ à fournir à chaque livreur
+- le livreur demande à récuperer son stock de plat
+- l'application affiche le stock de plat qu'il doit récupérer
+- l'application envoi une alerte au restaurateur de préparer le stock de plat du livreur
+- le livreur valide le stock de plat reçu
 - l'application met le statut du livreur en "disponible" 
 
 ### Commande et livraison de repas
-- le __client__ demande à voir le menu du jour
-- l'application affiche le menu du jour
+- le __client__ demande à voir le __menu du jour__
+- l'__application__ affiche le __menu du jour__
 - le client sélectionne un ou plusieurs plats
-- l'application affiche le ou les plats sélectionnés
-- l'application affiche un formulaire pour connaitre la quantité de chaque plats
-- le client entre la quantité
-- le client valide la commande de ce plat
+- l'application affiche le ou les __plats sélectionnés__
+- l'application affiche un formulaire pour connaitre le __nombre de plats__
+- le client entre le nombre de plats souhaité
+- le client valide la commande de ce ou ces plats sélectionnés
 - l'application enregistre la __commande__
-- l'application affiche la synthese de la commande
+- l'application affiche la __synthese de la commande__
 - l'application demande une validation de la commande au clients
 - le client valide la commande
 - l'application valide la commande
-- l'application recherche un livreur dont le statut est "disponible"
-- l'application verifie si le livreur à dans son stock les plats de la commande
-- l'application calcul le meilleur __*itineraire*__ et le __*temps de livraison*__
+- l'application recherche un __livreur__ dont le __statut__ est "disponible"
+- l'application verifie si le livreur à dans son __stock de plat__ le nombre de plat de la commande
+- l'application calcul le meilleur __itineraire__ et le __temps de livraison__
 - l'application envoie une alerte de "nouvel commande" au livreur le plus proche
 - le livreur demande à consulter les informations de la commande
-- l'application affiche le detail de la commande
-  * __*liste des plats*__
-  * adresse de livraison
-  * temps de livraison estimé
-  * identité du client
-- le livreur valide la __*livraison*__
+- l'application affiche la synthèse de la commande
+  * __plats sélectionné__
+  * __adresse de livraison__
+  * __temps de livraison__ estimé
+  * identité du __client__
+- le livreur valide la __livraison__
 - l'application enregistre la validation de la livraison
 - l'application change le statut du livreur en "en cour de livraison"
 - l'application affiche au livreur le meilleur itineraire et le temps estimé
 - l'application affiche au client la prise en charge de sa commande et le temps estimé d'attente
-- le livreur demande à valider la fin de livraison de la commande
+- le livreur demande à valider la __fin de livraison__ de la commande
 - l'appliction affiche le formulaire de fin de livraison
 - le livreur valide la fin de livraison
 - l'application change le statut du livreur en "disponible"
