@@ -180,22 +180,34 @@
 
 ## LES CLASSES
 
+| Restaurateur |
+|--------------|
+| - nom_restaurateur: string|
+| - prénom_restaurateur: string|
+| - nom_restaurant: string|
+| - adresse_restaurant: string|
+
 | Menu |
 |------|
-| - plat 1: clé primaire|
-| - plat 2: clé primaire|
-| - plat 3: clé primaire|
-| - plat 4: clé primaire|
+| - plat1: clé primaire|
+| - quantite_plat1_realise: number|
+| - plat2: clé primaire|
+| - quantite_plat2_realise: number|
+| - plat3: clé primaire|
+| - quantite_plat3_realise: number|
+| - plat4: clé primaire|
+| - quantite_plat4_realise: number|
 
 
 | Plat |
 |------|
-| - le nom du plat: string|
-| - le type de plat (plat ou dessert): string|
-| - la disponibilitee du plat: |
-| - la quantite de plat en service|
-| - la liste d'ingrédient dans le plat|
-| - le pri du plat|
+| - nom_plat: string|
+| - type_plat: string|
+| - disponibilitee_plat: string|
+| - quantite_plat_service: number|
+| - ingrédients_plat: string|
+| - prix_plat: number|
+| - image_plat: string|
 
 | Commandes |
 |-----------|
