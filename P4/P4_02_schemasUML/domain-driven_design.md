@@ -181,43 +181,4 @@
 
 ## LES CLASSES
 
-| Restaurateur |
-|--------------|
-| - nom_restaurateur: string|
-| - prénom_restaurateur: string|
-| - nom_restaurant: string|
-| - adresse_restaurant: string|
 
-| Menu |
-|------|
-| - plat1: clé primaire|
-| - quantite_plat1_realise: number|
-| - plat2: clé primaire|
-| - quantite_plat2_realise: number|
-| - plat3: clé primaire|
-| - quantite_plat3_realise: number|
-| - plat4: clé primaire|
-| - quantite_plat4_realise: number|
-
-
-| Plat |
-|------|
-| - nom_plat: string|
-| - type_plat: string|
-| - disponibilitee_plat: string|
-| - quantite_plat_service: number|
-| - ingrédients_plat: string|
-| - prix_plat: number|
-| - image_plat: string|
-
-| Commandes |
-|-----------|
-| - les plats commandes|
-| - l'adresse de livraison|
-| - le prix de la commande|
-| - le nom du livreur|
-| - le temps de livraison|
-
-> | Paiement|
-> |---------|
-> | - type de paiement|
