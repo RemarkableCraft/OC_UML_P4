@@ -1,19 +1,66 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class Restaurateur {
+class Restorateur{
 }
-class Menu_du_jour {
+
+class Menu_du_jour{
 }
-class Liste_plats {
+
+class Liste_des_plats{
 }
-class Image {
-  - Nom du fichier: string
+
+class Image{
+ - Nom du fichier: texte
 }
-class Plat {
-  - Nom: string
-  - Liste ingrédient: string
-  - Prix: number
-  - Type: string
+
+class Plat{
+ - Nom: texte
+ - Liste ingrédient: texte
+ - Prix: number
+ - Type: texte
 }
+
+class Plat_sélectionné{
+}
+
+class Liste_des_plats_sélectionnés{
+}
+
+class Quantité_de_plat_réalisable{
+}
+
+class Livreur{
+ - Statut: texte
+}
+
+class Liste_de_livreur{
+}
+
+class Liste_de_livreur_actif{
+}
+
+class Quantité_de_plat_à_préparer{
+}
+
+class Stock_de_plat{
+}
+
+class Client{
+ - Adresse: texte
+ - Pseudo: texte
+}
+
+class Nombre_de_plat_à_livrer{
+}
+
+class Commande{
+}
+
+class Livraison{
+ - Itinéraire: texte
+ - Temps: time
+ - Statut: texte
+}
+
 @enduml
