@@ -62,7 +62,7 @@
 
 ## DESCRIPTION DES CAS D'UTILISATION
 
-### Elaborer le menu du jour
+### Élaborer le menu du jour
 - le __restaurateur__ demande à créer le __menu du jour__
 - l'__application__ affiche la __liste des plats__
   * une __image__ du plat
@@ -72,7 +72,6 @@
   * le __type__ de plat
 - le restaurateur sélectionne le ou les __plats__ dans la liste
 - l'application enregistre le ou les __plats sélectionnés__
-- le restaurateur demande la __liste des plats sélectionnés__
 - l'application affiche la liste des plats sélectionnés
 - le restaurateur entre la __quantités réalisable__ de chaque plats
 - le restaurateur valide son menu
@@ -92,11 +91,11 @@
 - l'application stop la recherche de livreur si celui ci atteint la __quantité réalisable__ de plat défini par le restaurateur
 - l'application calcul la __quantité de plat à préparer__ que doit faire le restaurateur
 - l'application affiche au restaurateur la liste de livreur et la quantité de plat à préparer
-- le restaurateur confirme la liste de livreur et la quantité de plat à préaprer
-- l'application affiche le __stock de plat__ à fournir à chaque livreur
+- le restaurateur confirme la liste de livreur et la quantité de plat à préparer
+- le restaurateur notifie que les plat sont prêts
 - le livreur demande à récuperer son stock de plat
-- l'application affiche le stock de plat qu'il doit récupérer
-- l'application envoi une alerte au restaurateur de préparer le stock de plat du livreur
+- l'application envoi une alerte au restaurateur de préparer le stock du livreur
+- l'application affiche au livreur et au restaurateur le stock de plat qu'il doit récupérer
 - le livreur valide le stock de plat reçu
 - l'application met le statut du livreur en "disponible" 
 
