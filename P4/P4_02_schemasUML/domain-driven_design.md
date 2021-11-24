@@ -188,10 +188,6 @@
 
 ## LES CLASSES
 
-|Restarateur|
-|---|
-| |
-
 |Menu|
 |---|
 | - plat_menu: *id\_plat*|
