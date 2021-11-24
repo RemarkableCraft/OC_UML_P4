@@ -104,8 +104,8 @@
 - le __client__ demande à voir le __menu du jour__
 - l'__application__ affiche le __menu du jour__
 - le client sélectionne un ou plusieurs plats
-- l'application affiche le ou les __plats sélectionnés__
-- l'application affiche un formulaire pour connaitre le __nombre de plats à livrer__
+- l'application affiche le ou les __plats commandés__
+- l'application affiche un formulaire pour connaitre la __quantité de plats commandés__
 - le client entre le nombre de plats à liver
 - le client valide la __commande__ de ce ou ces plats sélectionnés
 - l'application enregistre la commande
@@ -119,11 +119,11 @@
 - l'application envoie une alerte de "nouvel commande" au livreur le plus proche
 - le livreur demande à consulter les informations de la commande
 - l'application affiche la synthèse de la commande
-  * __plats sélectionné__
+  * __plats commandés__ et la __quantité de plats commandés__
   * __adresse de livraison__
   * __temps de livraison__ estimé
   * identité du __client__
-- le livreur valide la __livraison__
+- le livreur valide la __commande__
 - l'application enregistre la validation de la livraison
 - l'application change le statut du livreur en "en cour de livraison"
 - l'application affiche au livreur le meilleur itineraire et le temps estimé
@@ -159,23 +159,30 @@
 
 - le restaurateur
 - le menu du jour
+- la liste des plats
 - les plats
 - une image du plat
 - le nom du plat
 - les ingrédients
 - le prix du plat
 - le type de plat
-- la quantité maximal de plats réalisable
+- les plats séléctionnés
+- la liste des plats séléctionnés
+- la quantité de plats réalisable
 - le livreur
 - le statut du livreur
+- la liste de livreur "actif"
+- la quantité de plat à préparer
 - le stock des plats par livreur
 - le client
 - la commande
-- la liste des plats commandée
+- les plats commandée
+- la quantité des plats commandés
 - l'adresse de livraison
 - le statut de la livraison
 - l'itineraire de la livraison
 - le temps de livraison
+- la fin de livraison
 
 ---------------------------------
 
@@ -187,70 +194,54 @@
 
 |Menu du jour|
 |---|
-| |
+| - plat: *id\_plat*|
+| - qte_plat: *nombre*|
 
-|Liste des plats|
+|Media|
 |---|
-| |
-
-|Image|
-|---|
-| - Nom du fichier: string|
+| - nom_fichier: *texte*|
+| - type_fichier: *texte*|
 
 |Plat|
 |---|
-| - Nom: string|
-| - Liste ingrédient: string|
-| - Prix: number|
-| - Type: string|
-
-|Plat sélectionné|
-|---|
-| |
-
-|Liste des plats sélectionnés|
-|---|
-| |
-
-|Quantité de plat réalisable|
-|---|
-| |
+| - nom_plat: *texte*|
+| - ingrédient_plat: *texte*|
+| - prix_plat: *nombre*|
+| - type_plat: *texte*|
+| - image: *id\_media*|
 
 |Livreur|
 |---|
-| - Statut |
-
-|Liste de livreur|
-|---|
-| |
-
-|Liste de livreur actif|
-|---|
-| |
-
-|Quantité de plat à préparer|
-|---|
-| |
+| - statut_livreur: *texte*|
+| - pseudo_livreur: *texte*|
+| - localisation: *id\_adresse*|
 
 |Stock de plat|
 |---|
-| |
+| - plat: *id\_plat*|
+| - livreur: *id\_livreur*|
+| - stock_plat: *nombre*|
 
 |Client|
 |---|
-| - Adresse|
-| - Pseudo|
+| - pseudo: *texte*|
+| - adresse_domicile: *id\_adresse*|
+| - adresse_bureau: *id\_adresse*|
+| - telephone: *nombre*|
+| - mail: *texte*|
 
-|Nombre de plat à livrer|
+|Adresse|
 |---|
-| |
+| - num_voie: *nombre*|
+| - nom_voie: *texte*|
+| - code_postal: *texte*|
+| - nom_ville: *texte*|
 
 |Commande|
 |---|
-| |
-
-|Livraison|
-|---|
-| - Itinéraire|
-| - Temps|
-| - Statut|
+| - client: *id\_client*|
+| - plat_cde: *id\_plat*|
+| - qte_plat_cde: *nombre*|
+| - prix_cde: *nombre*|
+| - tps_livraison: *time*|
+| - etat_cde: *texte*|
