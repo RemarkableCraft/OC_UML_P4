@@ -194,8 +194,8 @@
 
 |Menu du jour|
 |---|
-| - plat: *id\_plat*|
-| - qte_plat: *nombre*|
+| - plat_menu: *id\_plat*|
+| - qte_plat_menu: *nombre*|
 
 |Media|
 |---|
@@ -208,27 +208,28 @@
 | - ingrédient_plat: *texte*|
 | - prix_plat: *nombre*|
 | - type_plat: *texte*|
-| - image: *id\_media*|
+| - image_plat: *id\_media*|
 
 |Livreur|
 |---|
 | - statut_livreur: *texte*|
 | - pseudo_livreur: *texte*|
-| - localisation: *id\_adresse*|
+| - mail_livreur: *texte*|
+| - localisation_livreur: *id\_adresse*|
 
 |Stock de plat|
 |---|
-| - plat: *id\_plat*|
-| - livreur: *id\_livreur*|
-| - stock_plat: *nombre*|
+| - plat_stock: *id\_plat*|
+| - livreur_stock: *id\_livreur*|
+| - qte_plat_stock: *nombre*|
 
 |Client|
 |---|
-| - pseudo: *texte*|
-| - adresse_domicile: *id\_adresse*|
-| - adresse_bureau: *id\_adresse*|
-| - telephone: *nombre*|
-| - mail: *texte*|
+| - pseudo_client: *texte*|
+| - domicile_client: *id\_adresse*|
+| - bureau_client: *id\_adresse*|
+| - telephone_client: *nombre*|
+| - mail_client: *texte*|
 
 |Adresse|
 |---|
@@ -239,9 +240,9 @@
 
 |Commande|
 |---|
-| - client: *id\_client*|
+| - client_cde: *id\_client*|
 | - plat_cde: *id\_plat*|
 | - qte_plat_cde: *nombre*|
 | - prix_cde: *nombre*|
-| - tps_livraison: *time*|
+| - tps_livraison_cde: *time*|
 | - etat_cde: *texte*|
