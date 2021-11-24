@@ -244,5 +244,6 @@
 | - plat_cde: *id\_plat*|
 | - qte_plat_cde: *nombre*|
 | - prix_cde: *nombre*|
+| - livreur_cde: *id\_livreur*|
 | - tps_livraison_cde: *time*|
 | - etat_cde: *texte*|
