@@ -192,7 +192,7 @@
 |---|
 | |
 
-|Menu du jour|
+|Menu|
 |---|
 | - plat_menu: *id\_plat*|
 | - qte_plat_menu: *nombre*|
@@ -217,7 +217,7 @@
 | - mail_livreur: *texte*|
 | - localisation_livreur: *id\_adresse*|
 
-|Stock de plat|
+|Stock|
 |---|
 | - plat_stock: *id\_plat*|
 | - livreur_stock: *id\_livreur*|

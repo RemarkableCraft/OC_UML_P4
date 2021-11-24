@@ -1,66 +1,75 @@
 @startuml
 skinparam classAttributeIconSize 0
 
-class Restorateur{
+class Menu {
+ - plat_menu : id_plat
+ - qte_plat_menu : nombre
 }
 
-class Menu_du_jour{
+class Media {
+ - nom_fichier : texte
+ - type_fichier : texte
 }
 
-class Liste_des_plats{
+class Plat {
+ - nom_plat : texte
+ - ingrédient_plat : texte
+ - prix_plat : nombre
+ - type_plat : texte
+ - image_plat : id_media
 }
 
-class Image{
- - Nom du fichier: texte
+class Livreur {
+ - statut_livreur : texte
+ - pseudo_livreur : texte
+ - mail_livreur : texte
+ - localisation_livreur : id_adresse
 }
 
-class Plat{
- - Nom: texte
- - Liste ingrédient: texte
- - Prix: number
- - Type: texte
+class Stock {
+ - plat_stock : id_plat
+ - livreur_stock : id_livreur
+ - qte_plat_stock : nombre
 }
 
-class Plat_sélectionné{
+class Client {
+ - pseudo_client : texte
+ - domicile_client : id_adresse
+ - bureau_client : id_adresse
+ - telephone_client : nombre
+ - mail_client : texte
 }
 
-class Liste_des_plats_sélectionnés{
+class Adresse {
+ - num_voie : nombre
+ - nom_voie : texte
+ - code_postal : texte
+ - nom_ville : texte
 }
 
-class Quantité_de_plat_réalisable{
+class Commande {
+ - client_cde : id_client
+ - plat_cde : id_plat
+ - qte_plat_cde : nombre
+ - prix_cde : nombre
+ - livreur_cde : id_livreur
+ - tps_livraison_cde : time
+ - etat_cde : texte
 }
 
-class Livreur{
- - Statut: texte
-}
+Menu "4" <-- Plat
 
-class Liste_de_livreur{
-}
+Plat "1..3" <-- Media
 
-class Liste_de_livreur_actif{
-}
+Livreur "1" <-- Adresse
 
-class Quantité_de_plat_à_préparer{
-}
+Stock "0..4" <-- Plat
+Stock "*" <-- Livreur
 
-class Stock_de_plat{
-}
+Client "1..2" <-- Adresse
 
-class Client{
- - Adresse: texte
- - Pseudo: texte
-}
-
-class Nombre_de_plat_à_livrer{
-}
-
-class Commande{
-}
-
-class Livraison{
- - Itinéraire: texte
- - Temps: time
- - Statut: texte
-}
+Commande "1" <-- Client
+Commande "1..*" <-- Plat
+Commande "1" <-- Livreur
 
 @enduml
