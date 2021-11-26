@@ -8,11 +8,16 @@ actor Client as A3
 participant Application as UI
 database "Base de donnée" as BDD
 
+actor System as A4
+
 == Élaborer le menu du jour ==
 A1 --> UI : Créer le menu du jour
+UI --> BDD : Requête liste des plats
+BDD --> UI : Liste des plats
 UI --> A1 : Afficher la liste des plats
 A1 --> UI : Sélectionner les plats
 UI --> BDD : Enregistrer les plats sélectionnés
+BDD --> UI : Liste des plats sélectionnés
 UI --> A1 : Afficher la liste des plats sélectionnés
 A1 --> UI : Entrer la quantité réalisable de chaque plats
 A1 --> UI : Valider le menu
