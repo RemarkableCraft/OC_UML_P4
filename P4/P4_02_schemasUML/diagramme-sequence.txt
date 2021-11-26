@@ -15,16 +15,19 @@ A1 --> UI : Créer le menu du jour
 UI --> BDD : Requête liste des plats
 BDD --> UI : Liste des plats
 UI --> A1 : Afficher la liste des plats
-A1 --> UI : Sélectionner les plats
+A1 --> UI : Sélection des plats pour constituer le menu
 UI --> BDD : Enregistrer les plats sélectionnés
 BDD --> UI : Liste des plats sélectionnés
-UI --> A1 : Afficher la liste des plats sélectionnés
-A1 --> UI : Entrer la quantité réalisable de chaque plats
-A1 --> UI : Valider le menu
-UI --> BDD : Enregistrer les plats sélectionnés et la quantité réalisable
+UI --> A1 : Afficher le formulaire "quantité réalisable" des plats sélectionnés
+A1 --> UI : Entrer la quantité réalisable de chaque plats sélectionnés
+UI --> BDD : Enregistrer la quantité réalisable pour chaque plats sélectionnés
+BDD --> UI : Liste et quantité réalisable de chaque plats sélectionnés
 UI --> A1 : Afficher le menu final
-BDD --> UI : Mettre en ligne le menu
-BDD --> A3 : Envoyer une notification "Menu en ligne"
+A1 --> UI : Valider le menu
+UI --> BDD : Requete liste des clients
+BDD --> UI : Liste des clients
+UI --> A4 : Envoi liste de clients + contenue de notification "Menu en ligne"
+A4 --> A3 : Envoyer une notification "Menu en ligne"
 
 == Réassort des livreurs ==
 A1 --> UI : Demander des livreurs
