@@ -62,7 +62,7 @@
 
 ## DESCRIPTION DES CAS D'UTILISATION
 
-### Elaborer le menu du jour
+### Élaborer le menu du jour
 - le __restaurateur__ demande à créer le __menu du jour__
 - l'__application__ affiche la __liste des plats__
   * une __image__ du plat
@@ -72,31 +72,30 @@
   * le __type__ de plat
 - le restaurateur sélectionne le ou les __plats__ dans la liste
 - l'application enregistre le ou les __plats sélectionnés__
-- le restaurateur demande la __liste des plats sélectionnés__
 - l'application affiche la liste des plats sélectionnés
 - le restaurateur entre la __quantités réalisable__ de chaque plats
 - le restaurateur valide son menu
 - l'application enregistre les plats sélectionnés et les quantités réalisable
-- l'application affiche le __menu__ final
+- l'application affiche le menu du jour final
 - l'application mais en ligne le menu
 - l'application envoie une notification aux clients
 
 ### Réassort des livreurs
 - le __restaurateur__ demande des __livreurs__
-- l'__application__ envoie une alerte "besoin de livreur" à la liste de livreur
+- l'__application__ envoie une alerte "besoin de livreur" à la __liste de livreur__
 - le __livreur__ demande à ouvrir l'alerte
-- l'application affiche le __formulaire de statut__ du livreur
+- l'application affiche le __*formulaire de statut*__ du livreur
 - le livreur valide son __statut__ d'actif
 - l'application change le statut du livreur en "actif"
-- L'application compte le __nombre de livreur__ en statut "actif"
+- L'application compte le nombre de livreur dans la __liste de livreur actif__
 - l'application stop la recherche de livreur si celui ci atteint la __quantité réalisable__ de plat défini par le restaurateur
 - l'application calcul la __quantité de plat à préparer__ que doit faire le restaurateur
-- l'application affiche au restaurateur la __liste de livreur__ et la __quantité de plat à préparer__
-- le restaurateur confirme la liste de livreur et la quantité de plat à préaprer
-- l'application affiche le __stock de plat__ à fournir à chaque livreur
+- l'application affiche au restaurateur la liste de livreur et la quantité de plat à préparer
+- le restaurateur confirme la liste de livreur et la quantité de plat à préparer
+- le restaurateur notifie que les plat sont prêts
 - le livreur demande à récuperer son stock de plat
-- l'application affiche le stock de plat qu'il doit récupérer
-- l'application envoi une alerte au restaurateur de préparer le stock de plat du livreur
+- l'application envoi une alerte au restaurateur de préparer le stock du livreur
+- l'application affiche au livreur et au restaurateur le stock de plat qu'il doit récupérer
 - le livreur valide le stock de plat reçu
 - l'application met le statut du livreur en "disponible" 
 
@@ -104,12 +103,12 @@
 - le __client__ demande à voir le __menu du jour__
 - l'__application__ affiche le __menu du jour__
 - le client sélectionne un ou plusieurs plats
-- l'application affiche le ou les __plats sélectionnés__
-- l'application affiche un formulaire pour connaitre le __nombre de plats__
-- le client entre le nombre de plats souhaité
-- le client valide la commande de ce ou ces plats sélectionnés
-- l'application enregistre la __commande__
-- l'application affiche la __synthese de la commande__
+- l'application affiche le ou les __plats commandés__
+- l'application affiche un formulaire pour connaitre la __quantité de plats commandés__
+- le client entre le nombre de plats à liver
+- le client valide la __commande__ de ce ou ces plats sélectionnés
+- l'application enregistre la commande
+- l'application affiche la synthese de la commande
 - l'application demande une validation de la commande au clients
 - le client valide la commande
 - l'application valide la commande
@@ -119,11 +118,11 @@
 - l'application envoie une alerte de "nouvel commande" au livreur le plus proche
 - le livreur demande à consulter les informations de la commande
 - l'application affiche la synthèse de la commande
-  * __plats sélectionné__
+  * __plats commandés__ et la __quantité de plats commandés__
   * __adresse de livraison__
   * __temps de livraison__ estimé
   * identité du __client__
-- le livreur valide la __livraison__
+- le livreur valide la __commande__
 - l'application enregistre la validation de la livraison
 - l'application change le statut du livreur en "en cour de livraison"
 - l'application affiche au livreur le meilleur itineraire et le temps estimé
@@ -159,65 +158,87 @@
 
 - le restaurateur
 - le menu du jour
+- la liste des plats
 - les plats
 - une image du plat
 - le nom du plat
 - les ingrédients
 - le prix du plat
 - le type de plat
-- la quantité maximal de plats réalisable
+- les plats séléctionnés
+- la liste des plats séléctionnés
+- la quantité de plats réalisable
 - le livreur
 - le statut du livreur
+- la liste de livreur "actif"
+- la quantité de plat à préparer
 - le stock des plats par livreur
 - le client
 - la commande
-- la liste des plats commandée
+- les plats commandée
+- la quantité des plats commandés
 - l'adresse de livraison
 - le statut de la livraison
 - l'itineraire de la livraison
 - le temps de livraison
+- la fin de livraison
 
 ---------------------------------
 
 ## LES CLASSES
 
-| Restaurateur |
-|--------------|
-| - nom_restaurateur: string|
-| - prénom_restaurateur: string|
-| - nom_restaurant: string|
-| - adresse_restaurant: string|
+|Menu|
+|---|
+| - plat_menu: *id\_plat*|
+| - qte_plat_menu: *nombre*|
 
-| Menu |
-|------|
-| - plat1: clé primaire|
-| - quantite_plat1_realise: number|
-| - plat2: clé primaire|
-| - quantite_plat2_realise: number|
-| - plat3: clé primaire|
-| - quantite_plat3_realise: number|
-| - plat4: clé primaire|
-| - quantite_plat4_realise: number|
+|Media|
+|---|
+| - nom_fichier: *texte*|
+| - type_fichier: *texte*|
 
+|Plat|
+|---|
+| - nom_plat: *texte*|
+| - ingrédient_plat: *texte*|
+| - prix_plat: *nombre*|
+| - type_plat: *texte*|
+| - image_plat: *id\_media*|
 
-| Plat |
-|------|
-| - nom_plat: string|
-| - type_plat: string|
-| - disponibilitee_plat: string|
-| - quantite_plat_service: number|
-| - ingrédients_plat: string|
-| - prix_plat: number|
-| - image_plat: string|
+|Livreur|
+|---|
+| - statut_livreur: *texte*|
+| - pseudo_livreur: *texte*|
+| - mail_livreur: *texte*|
+| - localisation_livreur: *id\_adresse*|
 
-| Commandes |
-|-----------|
-| - les plats commandes|
-| - l'adresse de livraison|
-| - le prix de la commande|
-| - le nom du livreur|
-| - le temps de livraison|
+|Stock|
+|---|
+| - plat_stock: *id\_plat*|
+| - livreur_stock: *id\_livreur*|
+| - qte_plat_stock: *nombre*|
 
-> | Paiement|
-> |---------|
-> | - type de paiement|
+|Client|
+|---|
+| - pseudo_client: *texte*|
+| - domicile_client: *id\_adresse*|
+| - bureau_client: *id\_adresse*|
+| - telephone_client: *nombre*|
+| - mail_client: *texte*|
+
+|Adresse|
+|---|
+| - num_voie: *nombre*|
+| - nom_voie: *texte*|
+| - code_postal: *texte*|
+| - nom_ville: *texte*|
+
+|Commande|
+|---|
+| - client_cde: *id\_client*|
+| - plat_cde: *id\_plat*|
+| - qte_plat_cde: *nombre*|
+| - prix_cde: *nombre*|
+| - livreur_cde: *id\_livreur*|
+| - tps_livraison_cde: *time*|
+| - etat_cde: *texte*|
