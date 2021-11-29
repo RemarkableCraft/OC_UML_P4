@@ -1,13 +1,53 @@
 @startuml
 title Diagramme de classe - Application ExpressFood
 
-/* parametre */
+
 skinparam classAttributeIconSize 0
 
-/* liste classe */
-class Menu {
- - plat_menu : id_plat
- - qte_plat_menu : number
+class Client {
+ - nom_client : string
+ - prenom_client : string
+ - pseudo_client : string
+ - mail_client : string
+ - telephone_client : number
+ - domicile_client : id_adresse
+ - bureau_client : id_adresse
+}
+
+class Livreur {
+ - nom_livreur : string
+ - prenom_livreur : string
+ - pseudo_livreur : string
+ - mail_livreur : string
+ - telephone : number
+ - latitude : number
+ - longitude : number
+ - statut_livreur : string
+}
+
+class Restaurateur {
+ - nom_restaurateur : string
+ - prenom_restaurateur : string
+ - nom_restaurant : string
+ - mail_restaurateur : string
+ - telephone_restaurateur : string
+ - adresse_restaurant : id_adresse
+}
+
+class Adresse {
+ - num_voie : number
+ - type_voie : string
+ - nom_voie : string
+ - complement_adresse : string
+ - code_postal : string
+ - nom_ville : string
+}
+
+class Plat {
+ - nom_plat : string
+ - ingredient_plat : array
+ - prix_plat : number
+ - type_plat : string
 }
 
 class Media {
@@ -16,49 +56,15 @@ class Media {
  - plat : id_plat
 }
 
-class Plat {
- - nom_plat : string
- - ingrédient_plat : array
- - prix_plat : number
- - type_plat : string
-}
-
-class Livreur {
- - statut_livreur : string
- - pseudo_livreur : string
- - mail_livreur : string
- - latitude : number
- - lontitude : number
- - téléphone : number
+class Menu {
+ - plat_menu : id_plat
+ - qte_plat_menu : number
 }
 
 class Stock {
  - plat_stock : id_plat
  - livreur_stock : id_livreur
  - qte_plat_stock : number
-}
-
-class Client {
- - nom : string
- - prénom : string
- - pseudo_client : string
- - domicile_client : id_adresse
- - bureau_client : id_adresse
- - telephone_client : number
- - mail_client : string
-}
-
-class Adresse {
- - num_voie : number
- - nom_voie : string
- - code_postal : string
- - nom_ville : string
-}
-
-class Plat_commande {
- - id_plat
- - id_commande
- - qt_plat
 }
 
 class Commande {
@@ -69,7 +75,15 @@ class Commande {
  - etat_cde : string
 }
 
-/* relation */
+class Plat_commande {
+ - plat_cmd : id_plat
+ - num_cmd : id_commande
+ - qt_plat_cmd : number
+}
+
+
+Restaurateur --> Menu
+
 Plat "0..1" --> "4" Menu
 Plat "0..1" --> "0..*" Stock
 
@@ -77,14 +91,12 @@ Media "1" --> "1..3" Plat
 
 Livreur "1" --> "0..*" Stock
 
-Adresse "1" --> "1..2" Client
+Adresse "1" -right-> "1..2" Client
+Adresse "1" -down-> "1" Restaurateur
 
 Client "1" --> "0..*" Commande
 
-Plat_commande "0..*" --> "1..*" Commande
-Plat_commande "1" --> "0..*" Plat
+Plat_commande "0..*" -left-> "1..*" Commande
+Plat_commande "1" -down-> "0..*" Plat
 
 @enduml
-
-
-http://www.plantuml.com/plantuml/uml/TLJRRXGn37tFLqJpYBIh5dZY0NN5HK822QaVCCecfhMQov0uLGlYW_OxziUOIJ9aNGrFEpd7FdQEdRr9f29bPmKXMP0VKTr5vHn80r9RbHB8dJnCaqMj28ENdvwc22bz3i48aHxGJsfEgB47eeZ7JF151t-Blq1U2L4O-Grybh_5B3PPHQDRZkyacd4vBl1FWl6IyjaT8Oe_NS2WgWe-kF47wdk4E0ScYkZl5foU9zWYIibUhMj-N_1Lid0iRVw9vvD1yBIIAaRrN2GZFXMmjzewu3gzs5TyZ91ZhPT8KQRHDemrco2Ri4avXNQJi8gGiW7MZ0r-0wNpoPvFqttmiE7oBGNzS36dLCviKAt-9TKWDiP2RrJuO15yTvrVVRQROTqENT8OOu93ZHOQLrjHPjbEMFXZZg3o_rW22yM57j1QRKOtV6EIXwhIxf3T-1YGc-n31Lc_EXWOfv18MOQNOBIsH_CD7NLmJddJ2hPHjC-LgzvNfdlD4kjzHcsWcb7F_vPPiqNfSovuNtoQKfctmXHy8mbTQG185NrsaVB8Xglz_dgGkzrxERmToh_1Iw9ylXhg2WfHt_kmSjVx_PkXs274-fA6pSGs7PRwUcXx9qJzVPcxEYK4SxpHJOT5ya2krngz0M-oity1
