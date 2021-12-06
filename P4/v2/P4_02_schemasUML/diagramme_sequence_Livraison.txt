@@ -1,30 +1,37 @@
 @startuml
-title Diagramme de séquence - Application ExpressFood
+title
+ Diagramme de séquence - Application ExpressFood
+ **Livraison de repas**
+end title
 
-actor Restaurateur as A1
-actor Livreur as A2
 actor Client as A3
+actor Livreur as A2
 
 participant Application as UI
 database "Base de donnée" as BDD
 
-== Livraison de repas ==
-BDD -> BDD : Rechercher un livreur dont le statut est "disponible"
-BDD -> BDD : Vérifier si le livreur à dans son stock de plat le nombre de plat de la commande
-BDD -> BDD : Calculer le meilleur itineraire et le temps de livraison
-BDD -> A2 : Envoyer une notification "nouvel commande"
-A2 -> UI : Demander à consulter les informations de la commande
+ref over A3, BDD : **Se connecter à l'application**
+|||
+ref over A3, BDD : **Commande de repas**
+|||
+UI -> BDD : Requête : liste de livreur dont le statut est 'disponible'
+BDD -> UI : Envoie liste de livreur au statut 'disponible'
+UI -> UI : Rechercher le livreur qui a dans son stock le nombre de plat de la commande
+UI -> UI : Rechercher le livreur qui a le temps de livraison le plus court
+UI --> A2 : Envoyer une notification 'nouvel commande'
+A2 -> UI : Consulter les informations de la commande
 UI -> A2 : Afficher la synthèse de la commande
-A2 -> UI : Valider la commande
-UI -> BDD : Enregistrer la validation de la livraison
-BDD -> BDD : Changer le statut du livreur en "en cour de livraison"
+A2 -> UI : Cliquer sur 'Valider la prise en charge de la commande'
+UI -> BDD : Changer le statut du livreur + le statut de la commande en "en cour de livraison" 
 UI -> A2 : Afficher au livreur le meilleur itineraire et le temps estimé
-UI -> A3 : Afficher au client la prise en charge de sa commande et le temps estimé d'attente
-A2 -> UI : Demander à valider la fin de livraison de la commande
-UI -> A2 : Afficher le formulaire de "fin de livraison"
-A2 -> UI : Valider la fin de livraison
-BDD -> BDD : Changer le statut du livreur en "disponible"
-BDD -> BDD : Modifier le stock du livreur
-BDD -> A3 : Envoyer la notification "Bon appétit"
-
+UI --> A3 : Envoyer la notification 'la commande est prise en charge et le temps estimé d'attente'
+||40||
+... **Livraison** ...
+||40||
+A2 -> UI : Demander à valider la fin de livraison
+UI -> A2 : Afficher le formulaire de fin de livraison
+A2 -> UI : Cliquer sur le bouton 'Fin de livraison'
+UI -> BDD : Changer le statut du livreur en "disponible"
+UI -> BDD : Modifier le stock du livreur
+UI --> A3 : Envoyer la notification 'Bon appétit'
 @enduml
