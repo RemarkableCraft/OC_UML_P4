@@ -21,7 +21,7 @@ UI -> A3 : Afficher le formulaire menu du jour
 A3 -> UI : Sélectionner un plats
 UI -> A3 : Afficher la fiche du plat + formulaire nombre de plat
 A3 -> UI : Choisir le nombre de plat puis cliquer sur 'Ajouter au panier'
-UI -> BDD : Enregistrer le plat dans "Panier"
+UI -> BDD : Enregistrer le plat dans "Plat_commande"
 UI -> A3 : Afficher la page ajouter un nouveau plat
 A3 -> UI : Cliquer sur le bouton 'Ajouter un nouveau plat'
 ||5||
@@ -30,7 +30,7 @@ end
 A3 -> UI : Cliquer sur le bouton 'Voir mon panier'
 UI -> A3 : Afficher le ou les plats commandés
 A3 -> UI : Cliquer sur 'Valider la commande'
-UI -> BDD : Déplacer les données du "Panier" dans "Commande"
+UI -> BDD : Créer un numéro de commande
 BDD -> UI : Envoi des données de la commande
 UI --> A3 : Afficher la synthèse de la commande
 
