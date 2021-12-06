@@ -1,0 +1,102 @@
+@startuml
+title Diagramme de séquence - Application ExpressFood
+
+actor Restaurateur as A1
+actor Livreur as A2
+actor Client as A3
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+actor System as A4
+
+== Élaborer le menu du jour ==
+A1 --> UI : Créer le menu du jour
+UI --> BDD : Requête liste des plats
+BDD --> UI : Liste des plats
+UI --> A1 : Afficher la liste des plats
+A1 --> UI : Sélection des plats pour constituer le menu
+UI --> BDD : Enregistrer les plats sélectionnés
+BDD --> UI : Liste des plats sélectionnés
+UI --> A1 : Afficher le formulaire "quantité réalisable" des plats sélectionnés
+A1 --> UI : Entrer la quantité réalisable de chaque plats sélectionnés
+UI --> BDD : Enregistrer la quantité réalisable pour chaque plats sélectionnés
+BDD --> UI : Liste et quantité réalisable de chaque plats sélectionnés
+UI --> A1 : Afficher le menu final
+A1 --> UI : Valider le menu
+UI --> BDD : Requete liste des clients
+BDD --> UI : Liste des clients
+UI --> A4 : Envoi liste de clients + contenue de notification "Menu en ligne"
+A4 --> A3 : Envoyer une notification "Menu en ligne"
+
+title Diagramme de séquence - Application ExpressFood
+== Réassort des livreurs ==
+A1 --> UI : Demander des livreurs
+UI --> BDD : Requête liste des livreurs
+BDD --> UI : Liste des livreurs
+UI --> A4 : Envoi liste de livreurs + Contenue de notification "Besoin de livreur"
+A4 --> A2 : Envoyer une notification "Besoin de livreur"
+A2 --> UI : Ouvrir la notification "Besoin de livreur"
+UI --> A2 : Afficher le formulaire "Statut du livreur"
+A2 --> UI : Valider son statut "actif"
+UI --> BDD : Changer le statut du livreur de "inactif" à "actif" + requête liste de livreur actif
+BDD --> UI : Envoi liste livreur actifs
+UI --> UI : Compter le nombre de livreur "actif"
+UI --> UI : Stopper l'ajout de livreur "actif" quand la quantité de plat réalisable est atteint
+UI --> BDD : Requête liste de livreur "inactif"
+BDD --> UI : Liste de livreurs "inactif"
+UI --> A4 : Envoi liste de livreur "inactif" + Contenue notification "Plus besoin de livreurs"
+A4 --> A2 : Envoyer une notification "Plus besoin de livreurs"
+== ??? ==
+BDD --> BDD : Calculer le nombre plat à préparer
+BDD --> UI : Liste de livreur "Actif" + quantité de plat à préparer
+UI --> A1 : Afficher la liste de livreur et la quantité de plat à préparer
+A1 --> UI : Confirmer la liste de livreur et la quantité de plat à préparer
+A1 --> UI : Confirmer que les plats sont prêts
+UI --> A4 : Envoi liste de livreur "actif" + continue notification "Stock prêt à être retirer"
+A4 --> A2 : Envoyer une notification "Stock prêts à être retirer"
+A2 --> UI : Confirmer qu'il souhaite récuperer sont stock
+UI --> BDD : Requête quantité de plat en stock par livreur
+BDD --> UI : Réponse requête quantite de plat
+UI --> A4 : Envoi quantité de plat + contenue de notification "Préparer stock du livreur"
+A4 --> A1 : Envoyer une notification "Préparer le stock du livreur"
+A1 --> UI : Ouvrir la notification "Préparer le stock du livreur"
+UI --> A1 : Afficher le stock à préparer
+A1 --> UI : Valider la préparation du stock
+A2 --> UI : Vérifier le stock à récuperer
+UI --> A2 : Afficher le stock à récupérer
+A2 --> UI : Valider le réassort
+UI --> BDD : Changer le statut du livreur de "actif" en "disponible"
+
+== Commande et livraison de repas ==
+A3 --> UI : Voir le menu du jour
+UI --> A3 : Afficher le menu du jour
+A3 --> UI : Sélectionner un ou plusieurs plats
+UI --> A3 : Afficher le ou les plats commandés
+UI --> A3 : Afficher un formulaire pour connaitre la quantité de plats commandés
+A3 --> UI : Entrer le nombre de plats à liver
+A3 --> UI : Valider la commande de ce ou ces plats sélectionnés
+UI --> BDD : Enregistrer la commande
+UI --> A3 : Afficher la synthese de la commande
+UI --> A3 : Demander une validation de la commande au clients
+A3 --> UI : Valider la commande
+UI --> BDD : Valider la commande
+BDD --> BDD : Rechercher un livreur dont le statut est "disponible"
+BDD --> BDD : Vérifier si le livreur à dans son stock de plat le nombre de plat de la commande
+BDD --> BDD : Calculer le meilleur itineraire et le temps de livraison
+BDD --> A2 : Envoyer une notification "nouvel commande"
+A2 --> UI : Demander à consulter les informations de la commande
+UI --> A2 : Afficher la synthèse de la commande
+A2 --> UI : Valider la commande
+UI --> BDD : Enregistrer la validation de la livraison
+BDD --> BDD : Changer le statut du livreur en "en cour de livraison"
+UI --> A2 : Afficher au livreur le meilleur itineraire et le temps estimé
+UI --> A3 : Afficher au client la prise en charge de sa commande et le temps estimé d'attente
+A2 --> UI : Demander à valider la fin de livraison de la commande
+UI --> A2 : Afficher le formulaire de "fin de livraison"
+A2 --> UI : Valider la fin de livraison
+BDD --> BDD : Changer le statut du livreur en "disponible"
+BDD --> BDD : Modifier le stock du livreur
+BDD --> A3 : Envoyer la notification "Bon appétit"
+
+@enduml
