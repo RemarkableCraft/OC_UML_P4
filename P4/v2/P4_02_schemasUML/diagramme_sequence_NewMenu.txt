@@ -1,0 +1,29 @@
+@startuml
+title Diagramme de séquence - Application ExpressFood
+
+actor Restaurateur as A1
+actor Livreur as A2
+actor Client as A3
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+== Élaborer le menu du jour ==
+A1 -> UI : Créer le menu du jour
+UI -> BDD : Requête liste des plats
+BDD -> UI : Liste des plats
+UI -> A1 : Afficher la liste des plats
+A1 -> UI : Sélection des plats pour constituer le menu
+UI -> BDD : Enregistrer les plats sélectionnés
+BDD -> UI : Liste des plats sélectionnés
+UI -> A1 : Afficher le formulaire "quantité réalisable" des plats sélectionnés
+A1 -> UI : Entrer la quantité réalisable de chaque plats sélectionnés
+UI -> BDD : Enregistrer la quantité réalisable pour chaque plats sélectionnés
+BDD -> UI : Liste et quantité réalisable de chaque plats sélectionnés
+UI -> A1 : Afficher le menu final
+A1 -> UI : Valider le menu
+UI -> BDD : Requete liste des clients
+BDD -> UI : Liste des clients
+UI -> A3 : Envoyer une notification "Menu en ligne"
+
+@enduml

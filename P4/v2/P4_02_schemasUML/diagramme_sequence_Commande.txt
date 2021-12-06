@@ -1,0 +1,25 @@
+@startuml
+title Diagramme de séquence - Application ExpressFood
+
+actor Restaurateur as A1
+actor Livreur as A2
+actor Client as A3
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+== Commande de repas ==
+A3 -> UI : Voir le menu du jour
+UI -> A3 : Afficher le menu du jour
+A3 -> UI : Sélectionner un ou plusieurs plats
+UI -> A3 : Afficher le ou les plats commandés
+UI -> A3 : Afficher un formulaire pour connaitre la quantité de plats commandés
+A3 -> UI : Entrer le nombre de plats à liver
+A3 -> UI : Valider la commande de ce ou ces plats sélectionnés
+UI -> BDD : Enregistrer la commande
+UI -> A3 : Afficher la synthese de la commande
+UI -> A3 : Demander une validation de la commande au clients
+A3 -> UI : Valider la commande
+UI -> BDD : Valider la commande
+
+@enduml

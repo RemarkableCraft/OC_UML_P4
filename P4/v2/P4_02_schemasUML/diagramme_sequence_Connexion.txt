@@ -1,0 +1,24 @@
+@startuml
+title Diagramme de séquence - Application ExpressFood
+
+actor Utilisateur as A1
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+== Se connecter à l'application ==
+A1 -> UI : Démarrer l'application
+UI -> A1 : Afficher la page d'accueil
+A1 -> UI : Cliquer sur le bouton 'Se connecter'
+UI -> A1 : Afficher le formulaire de connexion
+A1 -> UI : Remplir et valider le formulaire de connexion
+UI -> BDD : Vérifier que le compte existe, et que le mot de passe soit correct
+ alt Informations corrects
+  BDD -> UI : Envoi la clé primaire
+  UI -> A1 : Afficher la page d'accueil
+ else Informations incorrectes
+  BDD -> UI : Envoi 'False'
+  UI -> A1 : Afficher un message d'erreur
+ end
+
+@enduml
