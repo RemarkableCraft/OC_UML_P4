@@ -153,6 +153,7 @@ CREATE TABLE commande (
 	commande_prix DECIMAL UNSIGNED NOT NULL,
 	fk_commande_livreur INT UNSIGNED NOT NULL,
 	commande_temps_livraison TIME NOT NULL,
+	commande_etat ENUM('en cour de livraison', 'livrée'),
 	commande_added_date DATETIME NOT NULL,
 	commande_deleted_date DATETIME NULL,
 		//FOREIGN KEY(fk_commande_panier) REFERENCES panier(id),

@@ -1,0 +1,107 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client {
+ - nom : Chaîne
+ - prenom : Chaîne
+ - pseudo : Chaîne
+ - mail : Chaîne
+ - telephone : Numérique
+ - /domicile : Numérique
+ - /bureau : Numérique
+ - motPasse : Chaîne
+}
+
+class Livreur {
+ - nom : Chaîne
+ - prenom : Chaîne
+ - pseudo : Chaîne
+ - mail : Chaîne
+ - telephone : Numérique
+ - latitude() : Numérique
+ - longitude() : Numérique
+ - statut : Chaîne
+ - motPasse : Chaîne
+}
+
+class Restaurateur {
+ - nom : Chaîne
+ - prenom : Chaîne
+ - nomRestaurant : Chaîne
+ - mail : Chaîne
+ - telephone : Chaîne
+ - /adresseRestaurant : Numérique
+ - motPasse : Chaîne
+}
+
+class Adresse {
+ - numeroVoie : Numérique
+ - typeVoie : Chaîne
+ - nomVoie : Chaîne
+ - complement : Chaîne
+ - codePostal : Chaîne
+ - ville : Chaîne
+}
+
+class Plat {
+ - nom : Chaîne
+ - ingredient : Chaîne
+ - /media : Numérique
+ - prix : Numérique
+ - type : Chaîne
+ - statut : Numérique
+ - /nomRestaurateur : Numérique
+}
+
+class Media {
+ - type : Chaîne
+ - nom : Chaîne
+ - chemin : Chaîne
+}
+
+class Menu {
+ - /nomRestaurateur : Numérique
+ - /nomPlat : Numérique
+ - quantitéPlat : Numérique
+}
+
+class Stock {
+ - /nomPlat : Numérique
+ - /nomLivreur : Numérique
+ - quantitéPlat : Numérique
+}
+
+class Panier {
+ - /nomClient : Numérique
+ - /nomPlat : Numérique
+ - quantitePlat : Numérique
+}
+
+class Commande {
+ - /numeroPanier : Numérique
+ - prix() : Numérique
+ - /nomLivreur : Numérique
+ - tempsLivraison() : Date
+ - statut : Chaîne
+}
+
+Adresse -right-> Client
+Adresse -down-> Restaurateur
+
+Restaurateur -right-> Plat
+Restaurateur -down-> Menu
+
+Client -down-> Panier
+
+Panier -right-> Commande
+
+Plat -up-> Panier
+Plat -left-> Menu
+Plat -right-> Stock
+
+Media -up-> Plat
+
+Commande -right-> Livreur
+
+Livreur -left-> Stock
+@enduml
