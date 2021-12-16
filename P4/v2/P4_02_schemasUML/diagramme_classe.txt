@@ -2,87 +2,87 @@
 skinparam classAttributeIconSize 0
 
 class Client {
- - nom : Chaîne
- - prenom : Chaîne
- - pseudo : Chaîne
- - mail : Chaîne
- - telephone : Numérique
- - /domicile : Numérique
- - /bureau : Numérique
- - motPasse : Chaîne
+ - nom : string
+ - prenom : string
+ - pseudo : string
+ - mail : string
+ - telephone : int
+ - /domicile : int
+ - /bureau : int
+ - motPasse : string
 }
 
 class Livreur {
- - nom : Chaîne
- - prenom : Chaîne
- - pseudo : Chaîne
- - mail : Chaîne
- - telephone : Numérique
- - latitude() : Numérique
- - longitude() : Numérique
- - statut : Chaîne
- - motPasse : Chaîne
+ - nom : string
+ - prenom : string
+ - pseudo : string
+ - mail : string
+ - telephone : int
+ - latitude() : int
+ - longitude() : int
+ - statut : string
+ - motPasse : string
 }
 
 class Restaurateur {
- - nom : Chaîne
- - prenom : Chaîne
- - nomRestaurant : Chaîne
- - mail : Chaîne
- - telephone : Chaîne
- - /adresseRestaurant : Numérique
- - motPasse : Chaîne
+ - nom : string
+ - prenom : string
+ - nomRestaurant : string
+ - mail : string
+ - telephone : string
+ - /adresseRestaurant : int
+ - motPasse : string
 }
 
 class Adresse {
- - numeroVoie : Numérique
- - typeVoie : Chaîne
- - nomVoie : Chaîne
- - complement : Chaîne
- - codePostal : Chaîne
- - ville : Chaîne
+ - numeroVoie : int
+ - typeVoie : string
+ - nomVoie : string
+ - complement : string
+ - codePostal : string
+ - ville : string
 }
 
 class Plat {
- - nom : Chaîne
- - ingredient : Chaîne
- - /media : Numérique
- - prix : Numérique
- - type : Chaîne
- - statut : Numérique
- - /nomRestaurateur : Numérique
+ - nom : string
+ - ingredient : string
+ - /media : int
+ - prix : int
+ - type : string
+ - statut : int
+ - /nomRestaurateur : int
 }
 
 class Media {
- - type : Chaîne
- - nom : Chaîne
- - chemin : Chaîne
+ - type : string
+ - nom : string
+ - chemin : string
 }
 
 class Menu {
- - /nomRestaurateur : Numérique
- - /nomPlat : Numérique
- - quantitéPlat : Numérique
+ - /nomRestaurateur : int
+ - /nomPlat : int
+ - quantitéPlat : int
 }
 
 class Stock {
- - /nomPlat : Numérique
- - /nomLivreur : Numérique
- - quantitéPlat : Numérique
+ - /nomPlat : int
+ - /nomLivreur : int
+ - quantitéPlat : int
 }
 
 class Panier {
- - /nomClient : Numérique
- - /nomPlat : Numérique
- - quantitePlat : Numérique
+ - /nomClient : int
+ - /nomPlat : int
+ - quantitePlat : int
 }
 
 class Commande {
- - /numeroPanier : Numérique
- - prix() : Numérique
- - /nomLivreur : Numérique
- - tempsLivraison() : Date
- - statut : Chaîne
+ - /numeroPanier : int
+ - prix() : int
+ - /nomLivreur : int
+ - tempsLivraison() : date
+ - statut : string
 }
 
 Adresse -right-> Client
