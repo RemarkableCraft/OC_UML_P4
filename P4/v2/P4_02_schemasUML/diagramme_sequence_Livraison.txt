@@ -1,0 +1,37 @@
+@startuml
+title
+ Diagramme de séquence - Application ExpressFood
+ **Livraison de repas**
+end title
+
+actor Client as A3
+actor Livreur as A2
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+ref over A3, BDD : **Se connecter à l'application**
+|||
+ref over A3, BDD : **Commande de repas**
+|||
+UI -> BDD : Requête : liste de livreur dont le statut est 'disponible'
+BDD -> UI : Envoie liste de livreur au statut 'disponible'
+UI -> UI : Rechercher le livreur qui a dans son stock le nombre de plat de la commande
+UI -> UI : Rechercher le livreur qui a le temps de livraison le plus court
+UI --> A2 : Envoyer une notification 'nouvel commande'
+A2 -> UI : Consulter les informations de la commande
+UI -> A2 : Afficher la synthèse de la commande
+A2 -> UI : Cliquer sur 'Valider la prise en charge de la commande'
+UI -> BDD : Changer le statut du livreur + le statut de la commande en "en cour de livraison" 
+UI -> A2 : Afficher au livreur le meilleur itineraire et le temps estimé
+UI --> A3 : Envoyer la notification 'la commande est prise en charge et le temps estimé d'attente'
+||40||
+... **Livraison** ...
+||40||
+A2 -> UI : Demander à valider la fin de livraison
+UI -> A2 : Afficher le formulaire de fin de livraison
+A2 -> UI : Cliquer sur le bouton 'Fin de livraison'
+UI -> BDD : Changer le statut du livreur en "disponible"
+UI -> BDD : Modifier le stock du livreur
+UI --> A3 : Envoyer la notification 'Bon appétit'
+@enduml
