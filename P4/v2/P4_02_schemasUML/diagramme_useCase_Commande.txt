@@ -1,0 +1,23 @@
+@startuml
+title
+ Diagramme de cas d'utilisation - Application ExpressFood
+ **Commande de repas**
+end title
+
+skinparam actorStyle awesome
+
+actor :Client: as A2
+
+(Se connecter) as UC1
+(Voir le menu du jour) as UC2
+(Ajouter des plats au panier) as UC3
+(Valider la commande) as UC4
+
+A2 -up- UC1
+A2 -left- UC2
+A2 -down- UC3
+A2 -right- UC4
+
+UC1 .down.> UC2 : extend
+UC4 .down.> UC3 : include
+@enduml

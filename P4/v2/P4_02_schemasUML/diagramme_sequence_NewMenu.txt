@@ -1,0 +1,42 @@
+@startuml
+title
+ Diagramme de séquence - Application ExpressFood
+ **Élaborer le menu du jour**
+end title
+
+actor Client as A3
+actor Restaurateur as A1
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+ref over A3, BDD : **Se connecter à l'application**
+|||
+A1 -> UI : Cliquer sur le bouton 'Créer le menu du jour'
+UI -> BDD : Requête : liste des plats
+BDD -> UI : Envoi la liste des plats
+UI -> A1 : Afficher la liste des plats
+|||
+loop Tant que le nombre de plat dans le "Menu" est strictement inférieur à 4
+||5||
+ A1 -> UI : Sélectionner un plat
+ UI -> BDD : Enregistrer le plat sélectionnés dans "Menu"
+ BDD -> UI : Envoi de la clé primaire du plat dans "Menu"
+ UI -> A1 : Afficher le formulaire quantité de plat réalisable
+ A1 -> UI : Remplir et valider le formulaire quantité de plat réalisable
+ UI -> BDD : Enregistrer la quantité de plat réalisable
+ UI -> BDD : Modifier le statut du plat
+ UI -> BDD : Requête : liste des plats
+ BDD -> UI : Envoi la liste des plats
+ UI -> A1 : Afficher la liste des plats //(avec une bulle notif pour les plats déja choisis)//
+||5||
+end
+|||
+UI -> A1 : Afficher la liste des plats choisis et leurs quantité réalisable
+UI -> A1 : Afficher le bouton 'Valider le menu'
+A1 -> UI : Cliquer sur le bouton 'Valider le menu'
+||80||
+UI -> BDD : Requête liste des clients
+BDD -> UI : Envoi la liste des clients
+UI --> A3 : Envoyer une notification "Menu en ligne"
+@enduml

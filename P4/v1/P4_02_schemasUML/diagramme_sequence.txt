@@ -29,6 +29,7 @@ BDD --> UI : Liste des clients
 UI --> A4 : Envoi liste de clients + contenue de notification "Menu en ligne"
 A4 --> A3 : Envoyer une notification "Menu en ligne"
 
+title Diagramme de séquence - Application ExpressFood
 == Réassort des livreurs ==
 A1 --> UI : Demander des livreurs
 UI --> BDD : Requête liste des livreurs
@@ -38,9 +39,11 @@ A4 --> A2 : Envoyer une notification "Besoin de livreur"
 A2 --> UI : Ouvrir la notification "Besoin de livreur"
 UI --> A2 : Afficher le formulaire "Statut du livreur"
 A2 --> UI : Valider son statut "actif"
-UI --> BDD : Changer le statut du livreur de "inactif" à "actif"
-BDD --> BDD : Compter le nombre de livreur "actif"
-BDD --> BDD : Stopper l'ajout de livreur "actif" quand la quantité de plat réalisable est atteint
+UI --> BDD : Changer le statut du livreur de "inactif" à "actif" + requête liste de livreur actif
+BDD --> UI : Envoi liste livreur actifs
+UI --> UI : Compter le nombre de livreur "actif"
+UI --> UI : Stopper l'ajout de livreur "actif" quand la quantité de plat réalisable est atteint
+UI --> BDD : Requête liste de livreur "inactif"
 BDD --> UI : Liste de livreurs "inactif"
 UI --> A4 : Envoi liste de livreur "inactif" + Contenue notification "Plus besoin de livreurs"
 A4 --> A2 : Envoyer une notification "Plus besoin de livreurs"

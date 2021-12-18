@@ -1,0 +1,37 @@
+@startuml
+title
+ Diagramme de séquence - Application ExpressFood
+ **Commande de repas**
+end title
+
+actor Client as A3
+
+participant Application as UI
+database "Base de donnée" as BDD
+
+ref over A3, BDD : **Se connecter à l'application**
+|||
+A3 -> UI : Cliquer sur le bouton 'Voir le menu du jour'
+UI -> BDD : Requête : Liste des plats du "Menu"
+BDD -> UI : Envoi la liste des plats du "Menu"
+|||
+loop Tant que le client veut commander un nouveau plat
+||5||
+UI -> A3 : Afficher le formulaire menu du jour
+A3 -> UI : Sélectionner un plats
+UI -> A3 : Afficher la fiche du plat + formulaire nombre de plat
+A3 -> UI : Choisir le nombre de plat puis cliquer sur 'Ajouter au panier'
+UI -> BDD : Enregistrer le plat dans "Plat_commande"
+UI -> A3 : Afficher la page ajouter un nouveau plat
+A3 -> UI : Cliquer sur le bouton 'Ajouter un nouveau plat'
+||5||
+end
+|||
+A3 -> UI : Cliquer sur le bouton 'Voir mon panier'
+UI -> A3 : Afficher le ou les plats commandés
+A3 -> UI : Cliquer sur 'Valider la commande'
+UI -> BDD : Créer un numéro de commande
+BDD -> UI : Envoi des données de la commande
+UI --> A3 : Afficher la synthèse de la commande
+
+@enduml

@@ -1,0 +1,107 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class Client {
+ - nom : string
+ - prenom : string
+ - pseudo : string
+ - mail : string
+ - telephone : int
+ - /domicile : int
+ - /bureau : int
+ - motPasse : string
+}
+
+class Livreur {
+ - nom : string
+ - prenom : string
+ - pseudo : string
+ - mail : string
+ - telephone : int
+ - latitude() : int
+ - longitude() : int
+ - statut : string
+ - motPasse : string
+}
+
+class Restaurateur {
+ - nom : string
+ - prenom : string
+ - nomRestaurant : string
+ - mail : string
+ - telephone : string
+ - /adresseRestaurant : int
+ - motPasse : string
+}
+
+class Adresse {
+ - numeroVoie : int
+ - typeVoie : string
+ - nomVoie : string
+ - complement : string
+ - codePostal : string
+ - ville : string
+}
+
+class Plat {
+ - nom : string
+ - ingredient : string
+ - /media : int
+ - prix : int
+ - type : string
+ - statut : int
+ - /nomRestaurateur : int
+}
+
+class Media {
+ - type : string
+ - nom : string
+ - chemin : string
+}
+
+class Menu {
+ - /nomRestaurateur : int
+ - /nomPlat : int
+ - quantitéPlat : int
+}
+
+class Stock {
+ - /nomPlat : int
+ - /nomLivreur : int
+ - quantitéPlat : int
+}
+
+class Panier {
+ - /nomClient : int
+ - /nomPlat : int
+ - quantitePlat : int
+}
+
+class Commande {
+ - /numeroPanier : int
+ - prix() : int
+ - /nomLivreur : int
+ - tempsLivraison() : date
+ - statut : string
+}
+
+Adresse -right-> Client
+Adresse -down-> Restaurateur
+
+Restaurateur -right-> Plat
+Restaurateur -down-> Menu
+
+Client -down-> Panier
+
+Panier -right-> Commande
+
+Plat -up-> Panier
+Plat -left-> Menu
+Plat -right-> Stock
+
+Media -up-> Plat
+
+Commande -right-> Livreur
+
+Livreur -left-> Stock
+@enduml
