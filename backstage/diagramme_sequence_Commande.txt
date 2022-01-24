@@ -1,37 +1,49 @@
 @startuml
 title
  Diagramme de séquence - Application ExpressFood
- **Commande de repas**
+ //""Commande de repas""//
 end title
 
-actor Client as A3
+skinparam actorStyle awesome
+!theme cerulean-outline
+
+actor Client as A3 #SkyBlue
 
 participant Application as UI
-database "Base de donnée" as BDD
+database "Base de donnée - class Menu" as BDD1
+database "Base de donnée - class Panier" as BDD2
+database "Base de donnée - class Commande" as BDD3
 
-ref over A3, BDD : **Se connecter à l'application**
 |||
-A3 -> UI : Cliquer sur le bouton 'Voir le menu du jour'
-UI -> BDD : Requête : Liste des plats du "Menu"
-BDD --> UI : Envoi la liste des plats du "Menu"
+ref#SkyBlue over A3, BDD3 : **Se connecter**
 |||
-loop Tant que le client veut commander un nouveau plat
-||5||
-UI --> A3 : Afficher le formulaire menu du jour
-A3 -> UI : Sélectionner un plats
-UI --> A3 : Afficher la fiche du plat + formulaire nombre de plat
-A3 -> UI : Choisir le nombre de plat puis cliquer sur 'Ajouter au panier'
-UI -> BDD : Enregistrer le plat dans "Plat_commande"
-UI --> A3 : Afficher la page ajouter un nouveau plat
-A3 -> UI : Cliquer sur le bouton 'Ajouter un nouveau plat'
-||5||
+
+group SD: Commander
+	A3 -> UI : Cliquer sur le bouton 'Voir le menu du jour'
+	UI -> BDD1 : Requête : Liste des plats
+	BDD1 --> UI : Envoi la liste des plats (id_plat)
+	UI --> A3 : Affiche le menu
+	A3 -> UI : Cliquer sur le bouton 'Commander'
+	|||
+	loop Tant que le client veut commander un nouveau plat
+	||5||
+	UI --> A3 : Afficher le formulaire commande
+	A3 -> UI : Sélectionner un plats
+	UI --> A3 : Afficher la fiche du plat + formulaire nombre de plat
+	A3 -> UI : Choisir le nombre de plat puis cliquer sur 'Ajouter au panier'
+	UI -> BDD2 : Enregistrer le plat (id_plat)
+	UI --> A3 : Afficher la page ajouter un nouveau plat
+	A3 -> UI : Cliquer sur le bouton 'Ajouter un nouveau plat'
+	||5||
+	end
+	|||
+	A3 -> UI : Cliquer sur le bouton 'Voir mon panier'
+	UI -> BDD2 : Requête liste de plat
+	BDD2 --> UI : Envoi liste de plat (id_plat)
+	UI --> A3 : Afficher le ou les plats commandés
+	A3 -> UI : Cliquer sur 'Valider la commande'
+	UI -> BDD3 : Requête Envoi le contenu de la table Panier & créer un numéro de commande
+	BDD3 --> UI : Envoi des données de la commande (id_commande)
+	UI --> A3 : Afficher la synthèse de la commande
 end
-|||
-A3 -> UI : Cliquer sur le bouton 'Voir mon panier'
-UI --> A3 : Afficher le ou les plats commandés
-A3 -> UI : Cliquer sur 'Valider la commande'
-UI -> BDD : Créer un numéro de commande
-BDD --> UI : Envoi des données de la commande
-UI --> A3 : Afficher la synthèse de la commande
-
 @enduml

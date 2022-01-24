@@ -1,37 +1,40 @@
 ## LES ACTEURS
 
 ### Client
-- client_pseudo
-- client_adresse
-- client_telephone
-- client_mail
+- pseudo
+- adresse
+- téléphone
+- mail
 
 ### Livreur
-- livreur_pseudo
-- livreur_statut
-- livreur_position
-- livreur_telephone
+- pseudo
+- statut
+- position
+- téléphone
 
 ### Restaurateur
-- restaurateur_nomRestaurant
-- restaurateur_adresseRestaurant
-- restaurateur_nom
+- nom du restaurant
+- adresse du restaurant
+- nom du restaurateur
 
 ---------------------------------
 
 ## LEURS OBJECTIFS / CAS D'UTILISATION
+	--> Livrer des plats de qualité à domicile en moins de 20 min
 
 ### Restaurateur
-	--> Livrer des plats de qualité à domilcile
-	--> Faire le menu du jour
+	--> Créer le menu du jour
+	--> Créer de nouveau plat
 	--> Préparer et conditionner 2 plats et 2 desserts
 	--> Transmettre les plats aux livreurs
 
 ### Livreur
+	--> Recevoir les plats du restaurateur
 	--> "Marauder" dans les rues en attendant une livraison
 	--> Livrer les commandes le plus rapidement possible (moins de 20min)
 
 ### Client
+	--> Consulter le menu
 	--> Commander un ou plusieurs plats
 
 ---------------------------------

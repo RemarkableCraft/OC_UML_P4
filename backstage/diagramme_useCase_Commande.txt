@@ -1,12 +1,13 @@
 @startuml
 title
  Diagramme de cas d'utilisation - Application ExpressFood
- **Commande de repas**
+ //""Commande de repas""//
 end title
 
 skinparam actorStyle awesome
+!theme cerulean-outline
 
-actor :Client: as A2
+actor :Client: as A2 #SkyBlue
 
 (Se connecter) as UC1
 (Voir le menu du jour) as UC2
@@ -20,4 +21,5 @@ A2 -right- UC4
 
 UC1 .down.> UC2 : extend
 UC4 .down.> UC3 : include
+UC4 .up.> UC1 : include
 @enduml

@@ -1,13 +1,14 @@
 @startuml
 title
  Diagramme de cas d'utilisation - Application ExpressFood
- **Livraison de repas**
+ //""Livraison de repas""//
 end title
 
 skinparam actorStyle awesome
+!theme cerulean-outline
 
-actor :Client: as A2
-actor :Livreur: as A3
+actor :Client: as A2 #SkyBlue
+actor :Livreur: as A3 #SkyBlue
 
 (Se connecter) as UC1
 usecase UC2 as "Recevoir une notification

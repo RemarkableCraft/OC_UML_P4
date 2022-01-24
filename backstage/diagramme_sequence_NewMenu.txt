@@ -1,42 +1,52 @@
 @startuml
 title
  Diagramme de séquence - Application ExpressFood
- **Élaborer le menu du jour**
+ //""Élaborer le menu du jour""//
 end title
 
-actor Client as A3
-actor Restaurateur as A1
+skinparam actorStyle awesome
+!theme cerulean-outline
+
+actor Client as A3 #SkyBlue
+actor Restaurateur as A1 #SkyBlue
 
 participant Application as UI
-database "Base de donnée" as BDD
+database "Base de donnée - class Plat" as BDD1
+database "Base de donnée - class Menu" as BDD2
+database "Base de donnée - class User" as BDD3
 
-ref over A3, BDD : **Se connecter à l'application**
+|||
+ref#SkyBlue over A3, BDD2 : **Se connecter**
 |||
 A1 -> UI : Cliquer sur le bouton 'Créer le menu du jour'
-UI -> BDD : Requête : liste des plats
-BDD --> UI : Envoi la liste des plats
+UI -> BDD1 : Requête : liste des plats
+BDD1 --> UI : Envoi la liste des plats (id_Plat)
 UI --> A1 : Afficher la liste des plats
+ A1 -> UI : Sélectionner un plat (id_Plat)
+ UI -> BDD2 : Enregistrer le plat sélectionnés (id_plat)
+ BDD2 --> UI : Envoi info plat (id_plat)
+ UI --> A1 : Afficher le formulaire quantité de plat réalisable
+ A1 -> UI : Remplir et valider le formulaire quantité de plat réalisable (quantite_plat)
+ UI ->> BDD2 : Enregistrer la quantité de plat réalisable (quantite_plat)
+ UI ->> BDD1 : Modifier le statut du plat (statut_plat)
+ BDD2 ->> UI : Envoi nombre de donnée dans sa class (::rowCount)
 |||
 loop Tant que le nombre de plat dans le "Menu" est strictement inférieur à 4
 ||5||
- A1 -> UI : Sélectionner un plat
- UI -> BDD : Enregistrer le plat sélectionnés dans "Menu"
- BDD --> UI : Envoi de la clé primaire du plat dans "Menu"
- UI --> A1 : Afficher le formulaire quantité de plat réalisable
- A1 -> UI : Remplir et valider le formulaire quantité de plat réalisable
- UI ->> BDD : Enregistrer la quantité de plat réalisable
- UI ->> BDD : Modifier le statut du plat
- UI ->> BDD : Requête : liste des plats
- BDD --> UI : Envoi la liste des plats
+ UI ->> BDD1 : Requête : liste des plats
+ BDD1 --> UI : Envoi la liste des plats (id_plat)
  UI --> A1 : Afficher la liste des plats //(avec une bulle notif pour les plats déja choisis)//
 ||5||
 end
 |||
+UI ->> BDD2 : Requête : liste des plats
+BDD2 --> UI : Envoi la liste des plats (id_plat)
 UI -->> A1 : Afficher la liste des plats choisis et leurs quantité réalisable
 UI -->> A1 : Afficher le bouton 'Valider le menu'
 A1 -> UI : Cliquer sur le bouton 'Valider le menu'
 ||80||
-UI -> BDD : Requête liste des clients
-BDD --> UI : Envoi la liste des clients
+
+UI -> BDD3 : Requête liste des clients
+BDD3 --> UI : Envoi la liste des clients (id_user **if** role_user='client')
 UI --> A3 : Envoyer une notification "Menu en ligne"
 @enduml

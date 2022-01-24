@@ -1,27 +1,32 @@
 @startuml
 title
  Diagramme de cas d'utilisation - Application ExpressFood
- **Élaborer le menu du jour**
+ //""Élaborer le menu du jour""//
 end title
 
 skinparam actorStyle awesome
+!theme cerulean-outline
 
-actor :Restaurateur: as A1
-actor :Client: as A2
+actor :Restaurateur: as A1 #SkyBlue
+actor :Client: as A2 #SkyBlue
 
 (Se connecter) as UC1
 (Sélectionner des plats pour le menu) as UC2
+(Créer de nouveau plats) as UC5
 (Valider et publier le menu du jour) as UC3
 (Voir le menu du jour) as UC4
 
-A1 -left- UC1
-A1 -up- UC2
+A1 -left-- UC1
 A1 -down- UC3
+A1 -- UC2
+A1 -- UC5
 
-A2 -right- UC1
-A2 .down. UC4
+A2 -right-- UC1
+A2 -down- UC4
 
 UC3 .up.> UC1 : include
 UC4 .right.> UC3 : include
 UC1 .down.> UC4 : extend
+UC3 .right.> UC2 : include
+UC5 .left.> UC2 : extend
 @enduml

@@ -1,35 +1,40 @@
 @startuml
 title
  Diagramme de séquence - Application ExpressFood
- **Se connecter à l'application**
+ //""Se connecter à l'application""//
 end title
 
-actor Utilisateurs as A1
+skinparam actorStyle awesome
+!theme cerulean-outline
+
+actor Utilisateurs as A1 #SkyBlue
 
 participant Application as UI
-database "Base de donnée" as BDD
+database "Base de donnée - class User" as BDD
 
-A1 -> UI : Démarrer l'application
-UI --> A1 : Afficher la page d'accueil
-A1 -> UI : Cliquer sur le bouton 'Se connecter'
-UI --> A1 : Afficher le formulaire de connexion
-A1 -> UI : Remplir et valider le formulaire de connexion
-UI -> BDD : Vérifier que le compte existe, et que le mot de passe soit correct
-|||
-alt #FBDFDF Informations incorrects
- BDD --> UI : Envoi "False"
- ||5||
- loop #FBDFDF Tant que la Base de donnée envoi "False"
-  ||5||
-  UI --> A1 : Afficher le formulaire de connexion et les messages d'erreur
-  A1 -> UI : Remplir et valider le formulaire de connexion
-  UI -> BDD : Vérifier que le compte existe, et que le mot de passe soit correct
-  ||5||
- end
- ||5||
-else #E5FEE5 Informations correctes
- BDD --> UI : Envoi la clé primaire
- UI --> A1 : Afficher la page d'accueil
- ||5||
+group SD: Se connecter
+	A1 -> UI : Démarrer l'application
+	UI --> A1 : Afficher la page d'accueil
+	A1 -> UI : Cliquer sur le bouton 'Se connecter'
+	UI --> A1 : Afficher le formulaire de connexion
+	A1 -> UI : Remplir et valider le formulaire de connexion (POST_mail, POST_password)
+	UI -> BDD : Vérifier que le compte existe, et que le mot de passe soit correct (POST_mail, POST_password)
+	|||
+	alt #FBDFDF Informations incorrects
+	 BDD --> UI : Envoi "False"
+	 ||5||
+	 loop #FBDFDF Tant que la Base de donnée envoi "False"
+	  ||5||
+	  UI --> A1 : Afficher le formulaire de connexion et les messages d'erreurs
+	  A1 -> UI : Remplir et valider le formulaire de connexion (POST_mail, POST_password)
+	  UI -> BDD : Vérifier que le compte existe, et que le mot de passe soit correct (POST_mail, POST_password)
+	  ||5||
+	 end
+	 ||5||
+	else #E5FEE5 Informations correctes
+	 BDD --> UI : Envoi "True" (SESSION_id)
+	 UI --> A1 : Afficher la page d'accueil
+	 ||5||
+	end
 end
 @enduml
